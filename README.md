@@ -14,3 +14,16 @@ Developer test for HENNGE. Made in Golang.
  * Your source code must be a single file (`package main`)
  * Do not use any `for` statement
  * You may only use standard library packages
+### Sample Input
+```
+2
+4
+3 -1 1 14
+5
+9 6 -53 32 16
+```
+### Sample Output
+```
+206
+1397
+```
