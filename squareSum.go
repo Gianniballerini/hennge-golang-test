@@ -15,7 +15,7 @@ func main() {
 	var outerLoop int
 
 	scanner := bufio.NewScanner(os.Stdin)
-
+	//fmt.Println("How many test cases?")
 	// read the first line
 	scanner.Scan()
 
@@ -56,6 +56,7 @@ func processTestCase(testCaseNumber int) int {
 	var integerArray []int
 	scanner := bufio.NewScanner(os.Stdin)
 	// read first entry of test case (how many integers will have)
+	//fmt.Println("How many integers in the test case?")
 	scanner.Scan()
 	// convert it to integer
 	numberOfIntegersToRead, err := strconv.Atoi(scanner.Text())
@@ -74,39 +75,42 @@ func processInteger(amountOfIntegersToRead int, arrayOfIntegers []int) int {
 	//fmt.Println("processInteger")
 	// meaning i have read all the numbers i needed
 	if amountOfIntegersToRead == 0 {
-		//fmt.Println((len(arrayOfIntegers)-1))
 		sumOfSquares(arrayOfIntegers, (len(arrayOfIntegers) - 1), 0)
-		//fmt.Println("CHECK")
 		return 0
 	}
 	var i int
-	//reads digits from std input separated by blanks and saves them in i
+	//reads digit from std input separated by blanks and saves them in i
 	_, err := fmt.Scanf("%d", &i)
 	if err != nil {
 		return 0
 	}
-	fmt.Println(i)
+	//fmt.Println(i)
 
 	arrayOfIntegers = append(arrayOfIntegers, i)
 
+	// call this method again for the next case
 	return processInteger(amountOfIntegersToRead-1, arrayOfIntegers)
 }
 
 func sumOfSquares(arr []int, n int, sum int) int {
 	//fmt.Println("sumOfSquares")
 
+	// base case, position -1 all number processed
 	if n == -1 {
 		//fmt.Println("TOT APPEND")
+		// append total to final answer array
 		tot = append(tot, sum)
 		return -1
 	}
+	// if the number is negative do not sum and go to next number
 	if (arr[n] <= 0) && n >= 0 {
 		return sumOfSquares(arr, n-1, sum)
 	} else {
-		//fmt.Println(arr[n])
+		// sum of square of the number
 		sum += (arr[n] * arr[n])
 	}
 
+	// recursion next number
 	return sumOfSquares(arr, n-1, sum)
 
 }
